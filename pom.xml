@@ -124,8 +124,8 @@
   </build>
 
   <modules>
-    <module>tools/migration</module>
-    <module>tools/entity</module>
+    <module>migration</module>
+    <module>entity</module>
   </modules>
 
 </project>

@@ -73,7 +73,7 @@
           <resource>
             <directory>src/tools/resources</directory>
             <filtering>true</filtering>
-            <targetPath>${project.build.directory}</targetPath>
+            <targetPath>target</targetPath>
           </resource>
         </resources>
 
