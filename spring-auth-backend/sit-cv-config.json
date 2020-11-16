@@ -1,0 +1,35 @@
+{
+  "override": false,
+  "lifelines": [
+    {
+      "name": ".*Controller.*",
+      "annotation": ".*Controller",
+      "entryPoint": true
+    },
+    {
+      "name": ".*Service.*"
+    },
+    {
+      "name": ".*Repository.*",
+      "annotation": ".*(Repository|Named)",
+      "dbAccess": true
+    },
+    {
+      "name": ".*Factory.*",
+      "lifelineOnly": true
+    },
+    {
+      "name": ".*Specification.*",
+      "lifelineOnly": true
+    }
+  ],
+  "asyncAnnotations": [
+    "Async",
+    "Asynchronous"
+  ],
+  "sqlLogPattern": {
+    "start": "Hibernate: ",
+    "end": ""
+  },
+  "showAccessor": false
+}
