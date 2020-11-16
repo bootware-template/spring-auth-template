@@ -45,7 +45,7 @@ public class CustomReverseEngineeringStrategy extends DelegatingReverseEngineeri
     addMeta(map, "use-in-equals", "true");
     addMeta(map, "use-in-tostring", "true");
     addMeta(map, "extends", "BaseEntity");
-    addMeta(map, "extra-import", "jp.bootware.base.infrastructure.jpa.BaseEntity");
+    addMeta(map, "extra-import", "jp.bootware.template.infrastructure.jpa.BaseEntity");
 
     return map;
   }

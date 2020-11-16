@@ -8,7 +8,7 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>migration</artifactId>
+  <artifactId>spring-auth-migration</artifactId>
   <version>${parent.version}</version>
 
   <dependencies>

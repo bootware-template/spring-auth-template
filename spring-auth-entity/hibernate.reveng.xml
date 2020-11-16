@@ -17,8 +17,8 @@
 
   <table-filter match-name="flyway_schema_history" exclude="true" />
 
-  <table-filter match-name="user_info" package="jp.bootware.template.domain.entity"></table-filter>
-  <table-filter match-name="authority" package="jp.bootware.template.domain.entity"></table-filter>
-  <table-filter match-name="user_authority" package="jp.bootware.template.domain.entity"></table-filter>
+  <table-filter match-name="m_user" package="jp.bootware.template.springauthbackend.entity"></table-filter>
+  <table-filter match-name="m_role" package="jp.bootware.template.springauthbackend.entity"></table-filter>
+  <table-filter match-name="t_user_role" package="jp.bootware.template.springauthbackend.entity"></table-filter>
 
 </hibernate-reverse-engineering>

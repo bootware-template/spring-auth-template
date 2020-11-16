@@ -8,7 +8,7 @@
     <version>1.0.0</version>
   </parent>
 
-  <artifactId>entity</artifactId>
+  <artifactId>spring-auth-entity</artifactId>
 
   <properties>
     <hibernate-tools.destdir>${project.build.directory}/generated-sources/hibernate-tools</hibernate-tools.destdir>
@@ -73,7 +73,7 @@
           <resource>
             <directory>src/tools/resources</directory>
             <filtering>true</filtering>
-            <targetPath>target</targetPath>
+            <targetPath>${project.build.directory}</targetPath>
           </resource>
         </resources>
 

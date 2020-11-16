@@ -29,6 +29,7 @@
 
   <properties>
 
+    <java.version>11</java.version>
     <spring.boot.version>2.3.4.RELEASE</spring.boot.version>
 
     <admin.port>80</admin.port>
@@ -124,8 +125,9 @@
   </build>
 
   <modules>
-    <module>migration</module>
-    <module>entity</module>
+    <module>spring-auth-migration</module>
+    <module>spring-auth-entity</module>
+    <module>spring-auth-backend</module>
   </modules>
 
 </project>
