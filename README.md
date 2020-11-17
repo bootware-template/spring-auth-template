@@ -22,7 +22,7 @@ open ./target/schemaspy/index.html
 Jwt
 
 ```sh
-curl -X POST -H "Content-Type: application/json" -d '{ "loginId": "User1", "password": "password" }' http://localhost:8888/auth/login
+curl -i -X POST -H "Content-Type: application/json" -d '{ "loginId": "User1", "password": "password" }' http://localhost:8888/auth/login
 ```
 
 ## Develop Tools

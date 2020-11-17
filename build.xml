@@ -35,6 +35,10 @@
   <target name="init-container" if="${docker.installed}">
 
     <exec executable="${mvn.cmd}" failonerror="true">
+      <arg line="clean"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}" failonerror="true">
       <arg line="process-resources -N"/>
     </exec>
 
