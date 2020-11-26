@@ -3,6 +3,15 @@
 ## Setup
 
 ```sh
+# Windows
+mvnw clean
+mvnw -N install
+mvnw -N -Drun=init-container
+mvnw -f spring-auth-migration -P migrate-test
+mvnw -f spring-auth-entity -P reveng
+mvnw install -f spring-auth-entity
+
+# macOS, Linux
 ./mvnw clean
 ./mvnw -N install
 ./mvnw -N -Drun=init-container
@@ -19,9 +28,23 @@ open ./target/schemaspy/index.html
 
 ## Get started
 
-Jwt
+Run Backend
 
 ```sh
+# Windows
+mvnw -f spring-auth-backend sit-cv:run
+
+# macOS, Linux
+./mvnw -f spring-auth-backend sit-cv:run
+```
+
+Jwt Authentication
+
+```sh
+# Windows
+curl -i -X POST -H "Content-Type: application/json" -d "{ \"loginId\": \"User1\", \"password\": \"password\" }" http://localhost:8888/auth/login
+
+# macOS, Linux
 curl -i -X POST -H "Content-Type: application/json" -d '{ "loginId": "User1", "password": "password" }' http://localhost:8888/auth/login
 ```
 
@@ -33,5 +56,9 @@ curl -i -X POST -H "Content-Type: application/json" -d '{ "loginId": "User1", "p
   
 Run Code Visualizer
 ```sh
+# Windows
+mvnw -f spring-auth-backend sit-cv:run
+
+# macOS, Linux
 ./mvnw -f spring-auth-backend sit-cv:run
 ```
