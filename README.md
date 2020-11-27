@@ -32,7 +32,7 @@ Run Backend
 
 ```sh
 # Windows
-mvnw -f spring-auth-backend sit-cv:run
+mvnw -f spring-auth-backend spring-boot:run
 
 # macOS, Linux
 ./mvnw -f spring-auth-backend sit-cv:run
@@ -42,10 +42,14 @@ Jwt Authentication
 
 ```sh
 # Windows
-curl -i -X POST -H "Content-Type: application/json" -d "{ \"loginId\": \"User1\", \"password\": \"password\" }" http://localhost:8888/auth/login
+curl -c auth.cookie -i -X POST -H "Content-Type: application/json" -d "{ \"loginId\": \"User1\", \"password\": \"password\" }" http://localhost:8888/auth/login
+curl -XPOST -b auth.cookie -i -X POST http://localhost:8888/auth/me
+del auth.cookie
 
 # macOS, Linux
 curl -i -X POST -H "Content-Type: application/json" -d '{ "loginId": "User1", "password": "password" }' http://localhost:8888/auth/login
+curl -XPOST -b auth.cookie -i -X POST http://localhost:8888/auth/me
+rm auth.cookie
 ```
 
 ## Develop Tools

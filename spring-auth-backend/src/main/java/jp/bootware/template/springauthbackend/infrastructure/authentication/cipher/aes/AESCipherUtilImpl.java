@@ -1,20 +1,21 @@
 package jp.bootware.template.springauthbackend.infrastructure.authentication.cipher.aes;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Base64;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.cipher.CipherProperty;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.cipher.CipherUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Base64;
+
 @Slf4j
 public class AESCipherUtilImpl implements CipherUtil {
-
+  
   @Autowired CipherProperty property;
 
   public SecretKeySpec generateSecretKeySpec() {

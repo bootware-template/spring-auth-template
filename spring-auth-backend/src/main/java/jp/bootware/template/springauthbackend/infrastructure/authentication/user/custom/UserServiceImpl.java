@@ -5,12 +5,7 @@ import jp.bootware.template.springauthbackend.infrastructure.authentication.toke
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.TokenProperty;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.TokenUtil;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.TokenValidation;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.LoginRequest;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.LoginResponse;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.LogoutResponse;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserProfile;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserRepository;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserService;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.*;
 import jp.bootware.template.springauthbackend.infrastructure.web.HttpCookieUtil;
 import jp.bootware.template.springauthbackend.infrastructure.web.ResponseSuccessFailure;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,9 +117,7 @@ public class UserServiceImpl implements UserService {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     UserDetailsImpl customUserDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-    MUserEntity user = repository.findByMailAddress(customUserDetails.getUsername()).orElseThrow(
-        () -> new IllegalArgumentException(
-            "User not found with email " + customUserDetails.getUsername()));
+    MUserEntity user = repository.findByEmailOrUsername(customUserDetails.getUsername());
 
     UserProfile profile = new UserProfile();
     profile.setUserId(user.getUserId());
