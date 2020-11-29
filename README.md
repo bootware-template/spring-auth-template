@@ -40,15 +40,19 @@ mvnw -f spring-auth-backend spring-boot:run
 
 Jwt Authentication
 
+Login, Logout
+
 ```sh
 # Windows
 curl -c auth.cookie -i -X POST -H "Content-Type: application/json" -d "{ \"loginId\": \"User1\", \"password\": \"password\" }" http://localhost:8888/auth/login
-curl -XPOST -b auth.cookie -i -X POST http://localhost:8888/auth/me
+curl -b auth.cookie -i -X POST http://localhost:8888/auth/me
+curl -b auth.cookie -c auth.cookie  -i -X GET http://localhost:8888/auth/logout
 del auth.cookie
 
 # macOS, Linux
 curl -i -X POST -H "Content-Type: application/json" -d '{ "loginId": "User1", "password": "password" }' http://localhost:8888/auth/login
-curl -XPOST -b auth.cookie -i -X POST http://localhost:8888/auth/me
+curl -b auth.cookie -i -X POST http://localhost:8888/auth/me
+curl -b auth.cookie -c auth.cookie  -i -X GET http://localhost:8888/auth/logout
 rm auth.cookie
 ```
 

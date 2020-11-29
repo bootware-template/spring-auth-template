@@ -51,12 +51,12 @@ public class AuthenticationController {
     return userService.refresh(decryptedAccessToken, decryptedRefreshToken);
   }
 
-  @PostMapping(value = "/me", produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(value = "/me")
   public ResponseEntity<UserProfile> me() {
     return ResponseEntity.ok(userService.getUserProfile());
   }
 
-  @GetMapping(value = "/logout")
+  @RequestMapping(value = "/logout")
   public ResponseEntity<LogoutResponse> logout() {
     return userService.logout();
   }
