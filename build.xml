@@ -1,13 +1,13 @@
-<project xmlns:if="ant:if" xmlns:unless="ant:unless" name="authsample" basedir="." default="install">
+<project name="authsample" basedir="." default="install">
 
   <condition property="mvn.cmd" value="${basedir}\mvnw.cmd" else="${basedir}\mvnw">
-    <os family="windows" />
+    <os family="windows"/>
   </condition>
 
   <exec executable="docker-compose" resultproperty="docker.ret" failifexecutionfails="false">
     <arg line="version"/>
   </exec>
-  
+
   <condition property="docker.installed">
     <equals arg1="${docker.ret}" arg2="0"/>
   </condition>
@@ -28,10 +28,10 @@
     <exec executable="${mvn.cmd}" failonerror="true">
       <arg line="install"/>
     </exec>
-    
+
   </target>
-  
-  
+
+
   <target name="init-container" if="${docker.installed}">
 
     <exec executable="${mvn.cmd}" failonerror="true">
@@ -48,7 +48,7 @@
 
   </target>
 
-  
+
   <target name="export-dbdoc" if="${docker.installed}">
 
     <exec executable="docker-compose" failonerror="true">
@@ -56,8 +56,8 @@
     </exec>
 
   </target>
-  
-  
+
+
   <target name="set-version">
 
     <property name="version" value="1.0-SNAPSHOT"/>
@@ -67,13 +67,59 @@
     </exec>
 
     <exec executable="${mvn.cmd}">
-      <arg line="-f src/archetype" />
-      <arg line="versions:set -DnewVersion=${version} -DgenerateBackupPoms=false" />
+      <arg line="-f src/archetype"/>
+      <arg line="versions:set -DnewVersion=${version} -DgenerateBackupPoms=false"/>
     </exec>
 
     <replaceregexp file="README.md"
                    match="-DarchetypeVersion=.* "
-                   replace="-DarchetypeVersion=${version} " />
+                   replace="-DarchetypeVersion=${version} "/>
+
+  </target>
+
+  <target name="setup">
+
+    <exec executable="${mvn.cmd}">
+      <arg line="clean"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}">
+      <arg line="-N"/>
+      <arg line="install"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}">
+      <arg line="-N"/>
+      <arg line="-Drun=init-container"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}">
+      <arg line="-f"/>
+      <arg line="cloud-calte-migration"/>
+      <arg line="-P"/>
+      <arg line="migrate-test"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}">
+      <arg line="-f"/>
+      <arg line="cloud-calte-entity"/>
+      <arg line="-P"/>
+      <arg line="reveng"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}">
+      <arg line="install"/>
+      <arg line="-f"/>
+      <arg line="cloud-calte-entity"/>
+    </exec>
+
+    <exec executable="${mvn.cmd}">
+      <arg line="clean"/>
+      <arg line="install"/>
+      <arg line="-f"/>
+      <arg line="cloud-calte-backend"/>
+      <arg line="-Dmaven.test.skip"/>
+    </exec>
 
   </target>
 

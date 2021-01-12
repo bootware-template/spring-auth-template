@@ -4,20 +4,10 @@
 
 ```sh
 # Windows
-mvnw clean
-mvnw -N install
-mvnw -N -Drun=init-container
-mvnw -f spring-auth-migration -P migrate-test
-mvnw -f spring-auth-entity -P reveng
-mvnw install -f spring-auth-entity
+mvnw -Drun=setup
 
 # macOS, Linux
-./mvnw clean
-./mvnw -N install
-./mvnw -N -Drun=init-container
-./mvnw -f spring-auth-migration -P migrate-test
-./mvnw -f spring-auth-entity -P reveng
-./mvnw install -f spring-auth-entity
+./mvnw -Drun=setup
 ```
 
 ## Show DB Schema
