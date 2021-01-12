@@ -1,5 +1,10 @@
 # Spring Auth Template
 
+## Requires
+
+ - Java 11 (Amazon Corretto)
+ - Docker Desktop
+
 ## Setup
 
 ```sh
