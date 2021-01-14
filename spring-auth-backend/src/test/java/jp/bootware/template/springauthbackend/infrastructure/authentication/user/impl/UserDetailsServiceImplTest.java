@@ -9,12 +9,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 
 @SpringBootTest
-class UserDetailsServiceImplTest {
+public class UserDetailsServiceImplTest {
 
-  @Autowired UserDetailsService userDetailsService;
+  @Autowired
+  UserDetailsService userDetailsService;
 
   @Test
-  void loadUserByUsername() {
+  public void loadUserByUsername() {
 
     UserDetails userDetails = userDetailsService.loadUserByUsername("User1");
 

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserServiceImplTest {
+public class UserServiceImplTest {
 
   @Autowired
   AuthenticationController authenticationController;
@@ -18,7 +18,7 @@ class UserServiceImplTest {
   UserService userService;
 
   @Test
-  void getProfile() {
+  public void getProfile() {
 
     LoginRequest request = new LoginRequest();
     request.setLoginId("User1");
