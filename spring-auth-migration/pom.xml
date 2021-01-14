@@ -21,6 +21,11 @@
       <groupId>${db.jdbc.groupId}</groupId>
       <artifactId>${db.jdbc.artifactId}</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.sitoolkit.csv</groupId>
+      <artifactId>sit-csvloader-core</artifactId>
+      <version>0.8</version>
+    </dependency>
   </dependencies>
 
   <properties>
@@ -62,7 +67,7 @@
       <id>migrate</id>
 
       <build>
-        <defaultGoal>clean process-resources exec:java</defaultGoal>
+        <defaultGoal>clean compile process-resources exec:java</defaultGoal>
 
         <resources>
           <resource>
@@ -94,7 +99,7 @@
       <id>migrate-test</id>
 
       <build>
-        <defaultGoal>clean process-resources exec:java</defaultGoal>
+        <defaultGoal>clean test-compile process-resources exec:java</defaultGoal>
 
         <resources>
           <resource>

@@ -1,0 +1,5 @@
+id,user_name,password,mail_address
+system,Admin,$2a$10$zgPrRttBhV9k8kI5AOv2P.dVXX6HFdynM.7lXp4RJkLFaywzAxIOy,admin@bootware.jp
+user1,User1,$2a$10$zgPrRttBhV9k8kI5AOv2P.dVXX6HFdynM.7lXp4RJkLFaywzAxIOy,user1@bootware.jp
+user2,User2,$2a$10$zgPrRttBhV9k8kI5AOv2P.dVXX6HFdynM.7lXp4RJkLFaywzAxIOy,user2@bootware.jp
+user3,User3,$2a$10$zgPrRttBhV9k8kI5AOv2P.dVXX6HFdynM.7lXp4RJkLFaywzAxIOy,user3@bootware.jp
