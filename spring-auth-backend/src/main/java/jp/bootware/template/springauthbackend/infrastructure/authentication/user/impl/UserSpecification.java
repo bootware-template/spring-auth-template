@@ -1,4 +1,4 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl;
 
 import org.springframework.stereotype.Component;
 

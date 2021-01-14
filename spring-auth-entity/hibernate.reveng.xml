@@ -19,6 +19,9 @@
 
   <table-filter match-name="m_user" package="jp.bootware.template.springauthbackend.entity"></table-filter>
   <table-filter match-name="m_role" package="jp.bootware.template.springauthbackend.entity"></table-filter>
+  <table-filter match-name="m_action_authority" package="jp.bootware.template.springauthbackend.entity"></table-filter>
   <table-filter match-name="t_user_role" package="jp.bootware.template.springauthbackend.entity"></table-filter>
+  <table-filter match-name="t_user_action_authority"
+                package="jp.bootware.template.springauthbackend.entity"></table-filter>
 
 </hibernate-reverse-engineering>

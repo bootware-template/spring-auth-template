@@ -1,8 +1,9 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.dto;
+
+import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import lombok.Data;
 
 @Data
 public class LoginRequest {

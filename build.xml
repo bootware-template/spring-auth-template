@@ -95,14 +95,14 @@
 
     <exec executable="${mvn.cmd}">
       <arg line="-f"/>
-      <arg line="cloud-calte-migration"/>
+      <arg line="spring-auth-migration"/>
       <arg line="-P"/>
       <arg line="migrate-test"/>
     </exec>
 
     <exec executable="${mvn.cmd}">
       <arg line="-f"/>
-      <arg line="cloud-calte-entity"/>
+      <arg line="spring-auth-entity"/>
       <arg line="-P"/>
       <arg line="reveng"/>
     </exec>
@@ -110,14 +110,14 @@
     <exec executable="${mvn.cmd}">
       <arg line="install"/>
       <arg line="-f"/>
-      <arg line="cloud-calte-entity"/>
+      <arg line="spring-auth-entity"/>
     </exec>
 
     <exec executable="${mvn.cmd}">
       <arg line="clean"/>
       <arg line="install"/>
       <arg line="-f"/>
-      <arg line="cloud-calte-backend"/>
+      <arg line="spring-auth-backend"/>
       <arg line="-Dmaven.test.skip"/>
     </exec>
 

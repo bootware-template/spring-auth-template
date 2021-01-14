@@ -1,7 +1,8 @@
 package jp.bootware.template.springauthbackend.infrastructure.authentication.user;
 
-import java.util.Set;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 public class UserProfile {
@@ -10,4 +11,5 @@ public class UserProfile {
   private String email;
   private String username;
   private Set<String> roles;
+  private Set<String> authActions;
 }

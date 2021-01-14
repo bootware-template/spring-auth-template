@@ -1,11 +1,16 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl;
 
-import jp.bootware.template.springauthbackend.entity.MUserEntity;
+import jp.bootware.template.springauthbackend.entity.*;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.Token;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.TokenProperty;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.TokenUtil;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.TokenValidation;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.*;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.MUserRepository;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserProfile;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserService;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.dto.LoginRequest;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.dto.LoginResponse;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.dto.LogoutResponse;
 import jp.bootware.template.springauthbackend.infrastructure.web.HttpCookieUtil;
 import jp.bootware.template.springauthbackend.infrastructure.web.ResponseSuccessFailure;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +22,24 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
 
-  @Autowired HttpCookieUtil httpCookieUtil;
-  @Autowired TokenProperty tokenProperty;
-  @Autowired TokenUtil tokenUtil;
-  @Autowired TokenValidation tokenValidation;
-  @Autowired UserRepository repository;
-  @Autowired UserSpecification specification;
+  @Autowired
+  HttpCookieUtil httpCookieUtil;
+  @Autowired
+  TokenProperty tokenProperty;
+  @Autowired
+  TokenUtil tokenUtil;
+  @Autowired
+  TokenValidation tokenValidation;
+  @Autowired
+  MUserRepository repository;
+  @Autowired
+  UserSpecification specification;
 
   @Override
   public ResponseEntity<LoginResponse> login(
@@ -120,10 +133,17 @@ public class UserServiceImpl implements UserService {
     MUserEntity user = repository.findByEmailOrUsername(customUserDetails.getUsername());
 
     UserProfile profile = new UserProfile();
-    profile.setUserId(user.getUserId());
+    profile.setUserId(user.getId());
     profile.setUsername(user.getUserName());
     profile.setEmail(user.getMailAddress());
-    profile.setRoles(profile.getRoles());
+    profile.setRoles(user.getTUserRoles().stream()
+        .map(TUserRoleEntity::getMRole)
+        .map(MRoleEntity::getRoleName)
+        .collect(Collectors.toSet()));
+    profile.setAuthActions(user.getTUserActionAuthoritys().stream()
+        .map(TUserActionAuthorityEntity::getMActionAuthority)
+        .map(MActionAuthorityEntity::getActionName)
+        .collect(Collectors.toSet()));
 
     return profile;
   }

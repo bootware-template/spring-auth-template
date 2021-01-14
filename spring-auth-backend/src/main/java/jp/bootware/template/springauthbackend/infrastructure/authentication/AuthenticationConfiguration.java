@@ -7,8 +7,8 @@ import jp.bootware.template.springauthbackend.infrastructure.authentication.toke
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.jwt.JSONWebTokenUtilImpl;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.token.jwt.JSONWebTokenValidationImpl;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserService;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom.UserDetailsServiceImpl;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom.UserServiceImpl;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl.UserDetailsServiceImpl;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;

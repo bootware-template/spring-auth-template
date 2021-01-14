@@ -1,8 +1,8 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl;
 
 import jp.bootware.template.springauthbackend.infrastructure.authentication.AuthenticationController;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.LoginRequest;
 import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserService;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.dto.LoginRequest;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

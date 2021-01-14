@@ -1,14 +1,14 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-import jp.bootware.template.springauthbackend.entity.MRoleEntity;
-import jp.bootware.template.springauthbackend.entity.MUserEntity;
-import jp.bootware.template.springauthbackend.entity.TUserRoleEntity;
+import jp.bootware.template.springauthbackend.entity.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
 public class UserDetailsImpl implements UserDetails {
@@ -19,9 +19,16 @@ public class UserDetailsImpl implements UserDetails {
 
   public UserDetailsImpl(MUserEntity user) {
     this.user = user;
-    this.authorities = user.getTUserRoles().stream()
+
+    final Stream<String> roles = user.getTUserRoles().stream()
         .map(TUserRoleEntity::getMRole)
-        .map(MRoleEntity::getRoleName)
+        .map(MRoleEntity::getRoleName);
+
+    final Stream<String> authActions = user.getTUserActionAuthoritys().stream()
+        .map(TUserActionAuthorityEntity::getMActionAuthority)
+        .map(MActionAuthorityEntity::getActionName);
+
+    this.authorities = Stream.concat(roles, authActions)
         .map(SimpleGrantedAuthority::new)
         .collect(Collectors.toList());
   }

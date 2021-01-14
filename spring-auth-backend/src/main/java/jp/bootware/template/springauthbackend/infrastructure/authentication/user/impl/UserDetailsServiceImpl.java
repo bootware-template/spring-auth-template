@@ -1,7 +1,7 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user.custom;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.impl;
 
 import jp.bootware.template.springauthbackend.entity.MUserEntity;
-import jp.bootware.template.springauthbackend.infrastructure.authentication.user.UserRepository;
+import jp.bootware.template.springauthbackend.infrastructure.authentication.user.MUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,11 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
   @Autowired
-  UserRepository userRepository;
+  MUserRepository MUserRepository;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    MUserEntity user = userRepository.findByEmailOrUsername(username);
+    MUserEntity user = MUserRepository.findByEmailOrUsername(username);
     return new UserDetailsImpl(user);
   }
 }

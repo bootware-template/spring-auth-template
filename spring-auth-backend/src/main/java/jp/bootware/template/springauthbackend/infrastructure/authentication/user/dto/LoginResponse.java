@@ -1,4 +1,4 @@
-package jp.bootware.template.springauthbackend.infrastructure.authentication.user;
+package jp.bootware.template.springauthbackend.infrastructure.authentication.user.dto;
 
 import jp.bootware.template.springauthbackend.infrastructure.web.ResponseSuccessFailure;
 import lombok.AllArgsConstructor;
